@@ -16,7 +16,7 @@ This application provides a list of Menu within a variety of Restaurants as well
 ## How to Run it
 1. Install VirtualBox and Vagrant
 2. Clone The Udacity vagrantfile
-3. Go inside the vagrant directory of the cloned udacity's file
+3. Go inside the vagrant directory of the cloned udacity's file, and run `vagrant up` and then `vagrant ssh`
 4. Download this file, delete .git dir, and then move it inside the vagrant directory of udacity vm
 5. cd to directory that you have just moved
 6. Change the client_secret.json file with the youre, make sure the javascript origin and redirect uri correspond
