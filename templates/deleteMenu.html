@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="jumbotron border border-danger text-center">
+    <div>
+        <form action="{{url_for('deleteMenuItem', restaurant_id = restaurant_id, menu_id = item.id)}}" method="POST">
+            <h1 class="text-dark">Are sure of deleting this menu item </h1>
+            <h1 class="text-danger mb-5"> {{item.name}} Menu Item </h1>
+            <input type="submit" value="Delete" class="btn btn-danger  btn-lg btn-block mb-3">
+        </form>
+        <a href="{{url_for('showMenu', restaurant_id = restaurant_id)}}"
+            class="btn btn-outline-warning  btn-lg btn-block">Cancel</a><span>
+    </div>
+</div>
+{% endblock %}

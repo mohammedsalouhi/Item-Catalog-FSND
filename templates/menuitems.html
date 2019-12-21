@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+
+    {% for message in messages %}
+    <div class="p-3 mb-2 alert alert-success mt-3"> <strong> {{ message }} </strong> </div>
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+
+
+    <hr>
+</div>
+<div class="row">
+    {%include 'sidebar.html'%}
+    
+    <div class="col-8">
+        {%include 'menu.html'%}
+    </div>
+</div>
+{%endblock%}

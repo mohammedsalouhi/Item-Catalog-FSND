@@ -1,0 +1,22 @@
+<div class="col-4">
+    <h1 class="rounded-pill bg-success text-light text-center">Restaurants</h1>
+    {% if login %}
+    <div>
+        <a href="{{ url_for('newRestaurant') }}" class="btn btn-outline-success"><strong> + Add a
+                New Restaurant</strong></a>
+    </div>
+    {% endif%}
+    {% for restaurant in restaurants %}
+    <div class="border border-success rounded bg-light m-2 p-1">
+        <h4 class="text-center mb-5">{{restaurant.name}}</h4>
+        <a href="{{url_for('showMenu', restaurant_id = restaurant.id)}}" class="btn btn-success btn-block">Show
+            Menu</a>
+        {% if login and restaurant.user_id == login_session['user_id']%}
+        <a href="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}"
+            class="btn btn-warning btn-block">Edit</a>
+        <a href="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}"
+            class="btn btn-danger btn-block">Delete</a>
+        {% endif%}
+    </div>
+    {% endfor %}
+</div>

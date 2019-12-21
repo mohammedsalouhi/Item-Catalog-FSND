@@ -1,0 +1,39 @@
+
+<div>
+    
+    <h1 class="text-center text-success border border-top-0 border-success border-3">Menu of "{{restaurant.name}}" </h1>
+    {% if auth %}
+    <a href="{{url_for('newMenuItem', restaurant_id = restaurant.id)}}" class="btn btn-outline-success mb-3"><strong> + Add a
+            New Menu Item</strong></a>
+    {% endif %}
+</div>
+
+{% if items != [] %}
+<div>
+    <img src="{{creator.picture}}"  class="rounded-circle" width="50" height="50" alt="{{creator.name}}">
+    <p class="text-muted">Created by: {{creator.name}}</p>
+    
+    {% for i in items %}
+    <div class="card p-2 m-3 bg-light border border-success rounded-lg">
+        <div class="card-body">
+            <h4 class="card-title">{{i.name}}</h4>
+            <p class="card-text">{{i.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-light">{{i.price}}</li>
+            <li class="list-group-item bg-light">{{i.course}}</li>
+        </ul>
+
+        {% if auth %}
+        <a href="{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}"
+            class="btn btn-warning btn-lg btn-block">Edit</a>
+        <a href="{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id)}}"
+            class="btn btn-danger btn-lg btn-block">Delete</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% else%}
+<h1>There's no items in this menu</h1>
+{% endif %}

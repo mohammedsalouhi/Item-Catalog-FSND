@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div>
+    {% if login %}
+    <div>
+        <a href="{{ url_for('newRestaurant') }}" class="btn btn-outline-success"><strong> + Add a
+                New Restaurant</strong></a>
+    </div>
+    {% endif%}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+
+    {% for message in messages %}
+    <div class="p-3 mb-2 alert alert-success mt-3"> <strong> {{ message }} </strong> </div>
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+
+
+    <hr>
+    {% for restaurant in restaurants %}
+    <div class="border border-info rounded bg-secondary  m-4 p-2">
+        <h3 class="text-center mb-5">{{restaurant.name}}</h4>
+            <a href="{{url_for('showMenu', restaurant_id = restaurant.id)}}"
+                class="btn btn-success btn-lg btn-block">Show Menu</a>
+            {% if login and restaurant.user_id == login_session['user_id']%}
+            <a href="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}"
+                class="btn btn-warning  btn-lg btn-block">Edit</a>
+            <a href="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}"
+                class="btn btn-danger  btn-lg btn-block">Delete</a>
+            {% endif%}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

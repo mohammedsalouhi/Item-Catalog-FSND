@@ -1,0 +1,20 @@
+<div class="row top-menu">
+    <div class="col-md-6">
+        <a href="{{url_for('index')}}" class="btn btn-success"><h3>HOME</h3></a>
+    </div>
+    {% if not login %}
+    <div class="col-md-6 text-right">
+        <a href="{{url_for('showLogin')}}" class="btn btn-outline-info">Login</a>
+    </div>
+    {% else %}
+    <div class="col-md-6 text-right">
+        
+            <p>{{login_session['username']}} <img src="{{login_session['picture']}}" class="rounded-circle" width="40"
+                    height="40" alt="{{login_session['username']}}'s picture'"></p>
+        
+        <a href="{{url_for('gdisconnect')}}" class="btn btn-outline-info">Logout</a>
+    </div>
+    {% endif %}
+</div>
+<HR>
+</HR>

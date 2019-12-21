@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="jumbotron border border-success">
+    <div>
+        <h1 class="text-center text-success">Add a New Restaurants</h1>
+    </div>
+    <div>
+        <form action="{{url_for('newRestaurant')}}" method="POST">
+            <p class="text-dark">Name:</p>
+            <input type="text" name="restaurantName" placeholder="type here a restaurant's name..." class="form-control form-control-lg mb-3">
+
+            <input type="submit" value="Create" class="btn btn-success btn-lg btn-block mb-3">
+        </form>
+    </div>
+    <a href="{{url_for('index')}}" class="btn btn-outline-warning btn-lg btn-block">Cancel</a>
+</div>
+{% endblock %}
